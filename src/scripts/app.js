@@ -4,10 +4,33 @@ import Backbone from 'backbone'
 import init from './init'
 
 import TaskView from './views/taskView.js'
+import DoneView from './views/completeView.js'
+import UndoneView from './views/incompleteView.js'
 
 
 const app = function() {
-  ReactDOM.render(<TaskView />, document.querySelector('.container'))
+	var TaskRouter = Backbone.Router.extend({
+		routes:{
+			'allTasks': 'showAllTasks',
+			'done': 'showDoneTasks',
+			'undone': 'showUndoneTasks',
+			'*default': 'handleRedirect'
+		},
+		showAllTasks: function(){
+			ReactDOM.render(<TaskView />, document.querySelector('.container'))
+		},
+		showDoneTasks: function(){
+
+		},
+		showUndoneTasks: function(){
+
+		},
+		handleRedirect: function(){
+			location.hash = 'allTasks'
+		}
+	})
+	new TaskRouter
+	Backbone.history.start()
 }
 
 // x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..

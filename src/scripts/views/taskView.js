@@ -38,8 +38,7 @@ var Tasks = React.createClass({
 		return this.props.tasks.map((task) => {
 			return <Task
 			key = {task.cid}
-			task = {task}
-			/>
+			task = {task} />
 		})
 	},
 	render: function(){
@@ -52,11 +51,16 @@ var Tasks = React.createClass({
 })
 
 var Task = React.createClass({
+	toggleComplete: function(){
+		{this.props.task.get('done') ? 'complete' : 'incomplete'}
+	},
+
 	render: function(){
+		console.log(this.props.task)
 		return(
 			<div className="task">
 				<h4>{this.props.task.get('taskDescription')}</h4>
-				<button>Task Complete/Incomplete</button>
+				<button onClick={this.toggleComplete}> Task Complete </button>
 			</div>
 		)
 	}

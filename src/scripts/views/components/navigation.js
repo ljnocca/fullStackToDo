@@ -4,9 +4,9 @@ var Navigation = React.createClass({
 	render: function(){
 		return(
 			<div className = 'navigation'>
-				<button id='all'>All Tasks</button>
-				<button id='incomplete'>Incomplete Tasks</button>
-				<button id='complete'>Completed Tasks</button>
+				<a href='#allTasks'>ALL TASKS </a>
+				<a href='#done'>COMPLETE TASKS </a>
+				<a href='#undone'>INCOMPLETE TASKS</a>
 			</div>
 		)
 	}
