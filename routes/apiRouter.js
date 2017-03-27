@@ -3,6 +3,7 @@ const apiRouter = Router()
 let helpers = require('../config/helpers.js')
 
 let User = require('../db/schema.js').User
+var Task = require('../db/schema.js').Task
 
   
   apiRouter
@@ -46,6 +47,47 @@ let User = require('../db/schema.js').User
     })
 
     // Routes for a Model(resource) should have this structure
-
+apiRouter
+    //READ MANY
+    .get('/tasks', function(request, response) {
+      Task.find(request.query, function(error, records) {
+          if (error) {
+            return response.status(400).json(error)
+          }
+          response.json(records)
+        })
+      })
+    // CREATE
+    .post('/tasks', function(request, response) {
+        var newTask = new Task(request.body)
+        newTask.save(function(error, record) {
+          if (error) {
+            return response.status(400).json(error)
+          }
+          response.json(record)
+        })
+      })
+    // DELETE
+    .delete('/tasks/:taskID', function(request,response){
+        Task.remove({_id: request.params.taskID}, function(error) {
+          if (error) {
+            return response.status(400).json(error)
+          }
+          response.json({
+            msg: `target with id ${request.params.taskID} has been eliminated.`,
+            id: request.params.taskID
+          })
+        })
+      })
+    //UPDATE
+    .put('/tasks/:taskID', function(request,response) {
+        Task.findByIdAndUpdate(request.params.taskID,request.body,{new: true}, function(error,record) {
+          if (error) {
+            console.log(response)
+            return response.status(400).json(error)
+          }
+          response.json(record)
+        })
+      })
 
 module.exports = apiRouter

@@ -5,13 +5,11 @@ var STORE = Object.assign({}, Backbone.Events, {
 	data:{
 		tasksCollection: new TasksCollection()
 	},
-
-	_initialize: function() {
-		this.data.tasksCollection.on('update change', this.broadcastChange.bind(this))
-	},
-
-	broadcastChange: function() {
-		this.trigger('dataUpdated')
+	get: function(prop) {
+		if (this.data[prop] === undefined) {
+			throw new Error('the store doesn\'t have a property called ' + prop)
+		}
+		return this.data[prop]
 	},
 
 	set: function(attributes) {
@@ -20,5 +18,4 @@ var STORE = Object.assign({}, Backbone.Events, {
 	}
 })
 
-STORE._initialize()
 export default STORE

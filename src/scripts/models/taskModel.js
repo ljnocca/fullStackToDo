@@ -1,12 +1,14 @@
 import Backbone from 'backbone'
 
-export var Task = Backbone.Model.extend({
-	defaults:{
-		taskDescription: '',
-		done: false
-	}
+export var TaskModel = Backbone.Model.extend({
+	urlRoot: '/api/tasks',
+	idAtrribute: '_id'
 })
 
 export var TasksCollection = Backbone.Collection.extend({
-	model: Task
+	comparator: function(mod) {
+		return new Date(mod.get('createdAt')).getTime() * -1
+	},
+	model: TaskModel,
+	url: '/api/tasks'
 })
