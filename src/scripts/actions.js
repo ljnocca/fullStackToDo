@@ -15,21 +15,15 @@ var ACTIONS = {
 				}
 			)
 	},
-
-	toggleTask: function(){
-
-	},
-
 	deleteMod: function(model) {
 		model.destroy()
-			.done(ACTIONS.fetchAllIssues)
+			.done(ACTIONS.fetchAllTasks)
 			.fail(
 				function(err) {
 					alert('problem deleting your model!')
 					console.log(err)
 				})
 	},
-
 	fetchAllTasks: function() {
 		var taskColl = STORE.get('tasksCollection')
 		taskColl.fetch()
@@ -37,6 +31,20 @@ var ACTIONS = {
 				STORE.set({
 					tasksCollection: taskColl
 				})
+			})
+	},
+	toggleTask: function(model){
+		model.set({
+			done: model.get('done') ? 'complete' : 'incomplete'
+		})
+		model.save()
+			.done(function(resp){
+				console.log(resp)
+				ACTIONS.fetchAllTasks()
+			})
+			.fail(function(err){
+				alert("couldn't update your task status")
+				console.log(err)
 			})
 	}
 }

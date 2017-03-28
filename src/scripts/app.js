@@ -20,9 +20,11 @@ const app = function() {
 			ReactDOM.render(<TaskView />, document.querySelector('.container'))
 		},
 		showDoneTasks: function(){
+			ReactDOM.render(<DoneView />, document.querySelector('.container'))
 
 		},
 		showUndoneTasks: function(){
+			ReactDOM.render(<UndoneView />, document.querySelector('.container'))
 
 		},
 		handleRedirect: function(){

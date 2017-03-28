@@ -2,7 +2,7 @@ import Backbone from 'backbone'
 
 export var TaskModel = Backbone.Model.extend({
 	urlRoot: '/api/tasks',
-	idAtrribute: '_id'
+	idAttribute: '_id'
 })
 
 export var TasksCollection = Backbone.Collection.extend({

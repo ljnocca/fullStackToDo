@@ -3,8 +3,31 @@
 	box-sizing: border-box;
 }
 
-h1 {
-	font-size: 100px;
-	text-align: center;
-	color: fuchsia;
+.task {
+    background-color: rgba(185, 13, 13, 0.3);
+    width: 300px;
+    margin: 10px auto;
+    padding: 20px;
 }
+
+h3{
+	text-align: center;
+}
+
+.delete {
+	background-color:#f24537;
+	border-radius:6px;
+	border:1px solid #d02718;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #810e05;
+}
+.delete:hover {
+	background-color:#c62d1f;
+	box-shadow: 0px 0px 9px 8px #e8d4d4;
+}
+

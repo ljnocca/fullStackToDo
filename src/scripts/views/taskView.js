@@ -11,6 +11,9 @@ const TaskView = React.createClass({
 			this.setState(STORE.data)
 		})
 	},
+	componentWillUnmount:function(){
+		STORE.off('dataUpdated')
+    },
 	getInitialState: function() {
 		return STORE.data
 	},
@@ -28,7 +31,10 @@ const TaskView = React.createClass({
 
 var Tasks = React.createClass({
 	createTasks: function(model){
-		return <Task taskModel={model} key={model.cid} />
+		return <Task 
+				taskModel={model} 
+				key={model.cid} 
+				/>
 	},
 	render: function(){
 		return(
@@ -41,7 +47,7 @@ var Tasks = React.createClass({
 
 var Task = React.createClass({
 	toggleComplete: function(){
-		{this.props.taskModel.get('done') ? 'complete' : 'incomplete'}
+		ACTIONS.toggleTask(this.props.taskModel)
 	},
 	handleDelete: function(){
 		ACTIONS.deleteMod(this.props.taskModel)
@@ -51,9 +57,9 @@ var Task = React.createClass({
 		console.log(this.props.taskModel)
 		return(
 			<div className="task">
-				<h4>{this.props.taskModel.get('task')}</h4>
-				<button onClick={this.toggleComplete}> Task Complete </button>
-				<button onClick={this.handleDelete}> Delete Task </button>
+				<h3>{this.props.taskModel.get('task')}</h3>
+				<button className="toggleStatus" onClick={this.toggleComplete}> Task Complete </button>
+				<button className="delete" onClick={this.handleDelete}> Delete Task </button>
 			</div>
 		)
 	}
