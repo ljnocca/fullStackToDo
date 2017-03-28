@@ -23,6 +23,7 @@ const TaskView = React.createClass({
 			<div>
 				<Navigation />
 				<TaskForm />
+				<h1>ALL TASKS</h1>
 				<Tasks tasksCollection={this.state.tasksCollection} />
 			</div>
 		)
@@ -56,7 +57,8 @@ var Task = React.createClass({
 	render: function(){
 		console.log(this.props.taskModel)
 		return(
-			<div className="task">
+			<div className="allTask">
+
 				<h3>{this.props.taskModel.get('task')}</h3>
 				<button className="toggleStatus" onClick={this.toggleComplete}> Task Complete </button>
 				<button className="delete" onClick={this.handleDelete}> Delete Task </button>

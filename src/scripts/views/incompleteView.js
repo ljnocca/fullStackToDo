@@ -23,6 +23,7 @@ const UndoneView = React.createClass({
 		return(
 			<div>
 				<Navigation />
+				<h1>INCOMPLETE TASKS</h1>
 				<Tasks tasksCollection={this.state.tasksCollection.where({done:false})} />
 			</div>
 		)
@@ -55,7 +56,8 @@ var Task = React.createClass({
 
 	render: function(){
 		return(
-			<div className="task">
+			<div className="incompleteTask">
+
 				<h3>{this.props.taskModel.get('task')}</h3>
 				<button className="toggleStatus" onClick={this.toggleComplete}> Task Complete </button>
 				<button className="delete" onClick={this.handleDelete}> Delete Task </button>

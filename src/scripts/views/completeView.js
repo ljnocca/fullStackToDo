@@ -23,6 +23,7 @@ const DoneView = React.createClass({
 		return(
 			<div>
 				<Navigation />
+				<h1>COMPLETE TASKS</h1>
 				<Tasks tasksCollection={this.state.tasksCollection.where({done:true})} />
 			</div>
 		)
@@ -52,7 +53,8 @@ var Task = React.createClass({
 
 	render: function(){
 		return(
-			<div className="task">
+			<div className="completeTask">
+
 				<h3>{this.props.taskModel.get('task')}</h3>
 				<button className="delete" onClick={this.handleDelete}> Delete Task </button>
 			</div>
