@@ -74,6 +74,10 @@ input.formField {
     margin: 10px auto;
 }
 
+button{
+	margin: 5px;
+}
+
 .submitButton {
 	background-color:#89c403;
 	border-radius:6px;
@@ -105,10 +109,35 @@ input.formField {
 }
 
 .allTask {
-    background: grey;
+    background: #aab7ef;
     width: 50%;
     margin: 0 auto;
     margin-bottom: 10px;
     padding: 10px;
 }
+
+.incompleteTask {
+	background: #cc8585;
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.completeTask{
+	background: #40b57c;
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+@media (max-width: 450px) {
+  li.nav-item {
+    display: block;
+    margin: 30px;
+	}
+}
+
+
 

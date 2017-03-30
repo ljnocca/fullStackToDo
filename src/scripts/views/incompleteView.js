@@ -60,7 +60,7 @@ var Task = React.createClass({
 			<div className="incompleteTask">
 
 				<h3>{this.props.taskModel.get('task')}</h3>
-				<button className="toggleStatus" onClick={this.toggleComplete}> Task Complete </button>
+				<button className="submitButton" onClick={this.toggleComplete}> Task Complete </button>
 				<button className="delete" onClick={this.handleDelete}> Delete Task </button>
 			</div>
 		)
