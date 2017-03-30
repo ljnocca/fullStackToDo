@@ -18,7 +18,7 @@ const app = function() {
 			'*default': 'handleRedirect'
 		},
 		handleRedirect: function(){
-			location.hash='#login'
+			location.hash='login'
 		},
 		showAllTasks: function(){
 			ReactDOM.render(<TaskView />, document.querySelector('.container'))
