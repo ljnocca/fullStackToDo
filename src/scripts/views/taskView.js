@@ -63,6 +63,7 @@ var Task = React.createClass({
 				<p className="poster-name">
 					posted by <b>{this.props.taskModel.get('userName')}</b>
 				</p>
+				<button className="delete" onClick={this.handleDelete}> Delete Task </button>
 			</div>
 		)
 	}

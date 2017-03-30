@@ -33,24 +33,24 @@ const RegisterForm = React.createClass({
 		return (
 			<form onSubmit={this._handleSubmit} className='form-group register-form' >
 					<input 
-						className="mt-1 form-control"
+						className="formField"
 						type="text" 
 						name="yourName"
 						placeholder="enter your name"
 						 />
 					 <input 
-						className="mt-4 form-control"
+						className="formField"
 					 	type="text" 
 					 	name="email"
 					 	placeholder="enter your email"
 					 	 />
 					<input 
-						className="my-1 form-control"
+						className="formField"
 						type="password" 
 						name="password" 
 						placeholder="enter your password"
 						/>
-				<button className="btn btn-primary col-sm-3" type="submit">submit</button>
+				<button className="submitButton" type="submit">submit</button>
 			</form>
 			)
 	}
@@ -67,18 +67,18 @@ const LoginForm = React.createClass({
 		return (
 			<form onSubmit={this._handleSubmit} className='form-group register-form' >
 					 <input 
-						className="mt-4 form-control"
+						className="formField"
 					 	type="text" 
 					 	name="email"
 					 	placeholder="enter your email"
 					 	 />
 					<input 
-						className="my-1 form-control"
+						className="formField"
 						type="password" 
 						name="password" 
 						placeholder="enter your password"
 						/>
-				<button className="btn btn-primary col-sm-3" type="submit">submit</button>
+				<button className="submitButton" type="submit">submit</button>
 			</form>
 			)
 	}

@@ -7,13 +7,18 @@ import User from './../../models/userModel.js'
 const Banner = React.createClass({
 	render: function(){
 
-		var welcomeText = User.getCurrentUser() ? `welcome ${User.getCurrentUser().get('name')}!` : ''
+		var welcomeText = User.getCurrentUser() ? `Welcome ${User.getCurrentUser().get('name')}!` : ''
 	 	var	myDoneTasksLink = User.getCurrentUser() ? "#tasks/done/user/" + User.getCurrentUser().get('_id') : ''
 	 	var myUndoneTasksLink = User.getCurrentUser() ? "#tasks/undone/user/" + User.getCurrentUser().get('_id') : ''
 	 	return (
 	 		<div className='banner' >
-	 			<h1>Here are some Tasks</h1>
+	 			<h1 id="title">&#10003; TSKR </h1>
 	 			<ul className="nav">
+	 				<li className="nav-item">
+	 					<a href="#login" className="nav-link">
+	 						Login / Signup
+	 					</a>
+	 				</li>
 	 				<li className="nav-item">
 	 					<a href="#tasks/all" className="nav-link">
 	 						All Tasks
@@ -30,12 +35,7 @@ const Banner = React.createClass({
 	 					</a>
 	 				</li>
 	 				<li className="nav-item">
-	 					<a href="#login" className="nav-link">
-	 						Login / Signup
-	 					</a>
-	 				</li>
-	 				<li className="nav-item">
-	 					<a onClick={ACTIONS.logout} className="disabled nav-link">
+	 					<a onClick={ACTIONS.logout} className="logoutLink">
 	 						Log Out
 	 					</a>
 	 				</li>
