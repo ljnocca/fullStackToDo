@@ -6,29 +6,31 @@ import init from './init'
 import TaskView from './views/taskView.js'
 import DoneView from './views/completeView.js'
 import UndoneView from './views/incompleteView.js'
-
+import LoginPage from './views/loginPage.js'
 
 const app = function() {
 	var TaskRouter = Backbone.Router.extend({
 		routes:{
-			'allTasks': 'showAllTasks',
-			'done': 'showDoneTasks',
-			'undone': 'showUndoneTasks',
+			'tasks/all': 'showAllTasks',
+			'tasks/done/user/:id': 'showDoneTasks',
+			'tasks/undone/user/:id': 'showUndoneTasks',
+			'login': 'showLoginPage',
 			'*default': 'handleRedirect'
+		},
+		handleRedirect: function(){
 		},
 		showAllTasks: function(){
 			ReactDOM.render(<TaskView />, document.querySelector('.container'))
 		},
-		showDoneTasks: function(){
-			ReactDOM.render(<DoneView />, document.querySelector('.container'))
+		showDoneTasks: function(id){
+			ReactDOM.render(<DoneView  userId={id} />, document.querySelector('.container'))
 
 		},
-		showUndoneTasks: function(){
-			ReactDOM.render(<UndoneView />, document.querySelector('.container'))
-
+		showUndoneTasks: function(id){
+			ReactDOM.render(<UndoneView userId={id} />, document.querySelector('.container'))
 		},
-		handleRedirect: function(){
-			location.hash = 'allTasks'
+		showLoginPage: function(){
+			ReactDOM.render(<LoginPage />, document.querySelector('.container'))
 		}
 	})
 	new TaskRouter

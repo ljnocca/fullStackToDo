@@ -10,12 +10,14 @@ const usersSchema = new mongoose.Schema({
   // x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x
   
    // example of optional fields
-  name:      { type: String },
+  name:      { type: String, required: true },
   createdAt: { type: Date, default: Date.now }
 
 })
 
 const taskSchema = new mongoose.Schema({
+  userName: { type: String, required: true },
+  userId: {type: String, required: true},
 	task: { type: String, required: true },
 	done: {type: Boolean, default: false },
 	createdAt: { type: Date, default: Date.now }

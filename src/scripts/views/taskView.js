@@ -2,7 +2,8 @@ import React from 'react'
 import TaskForm from './components/taskForm.js'
 import STORE from '../store.js'
 import ACTIONS from '../actions.js'
-import Navigation from './components/navigation.js'
+import Banner from './components/banner.js'
+
 
 const TaskView = React.createClass({
 	componentWillMount: function(){
@@ -21,7 +22,7 @@ const TaskView = React.createClass({
 	render: function(){
 		return(
 			<div>
-				<Navigation />
+				<Banner />
 				<TaskForm />
 				<h1>ALL TASKS</h1>
 				<Tasks tasksCollection={this.state.tasksCollection} />
@@ -58,10 +59,10 @@ var Task = React.createClass({
 		console.log(this.props.taskModel)
 		return(
 			<div className="allTask">
-
 				<h3>{this.props.taskModel.get('task')}</h3>
-				<button className="toggleStatus" onClick={this.toggleComplete}> Task Complete </button>
-				<button className="delete" onClick={this.handleDelete}> Delete Task </button>
+				<p className="poster-name">
+					posted by <b>{this.props.taskModel.get('userName')}</b>
+				</p>
 			</div>
 		)
 	}

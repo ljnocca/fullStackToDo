@@ -2,11 +2,12 @@ import React from 'react'
 import TaskForm from './components/taskForm.js'
 import STORE from '../store.js'
 import ACTIONS from '../actions.js'
-import Navigation from './components/navigation.js'
+import Banner from './components/banner.js'
+
 
 const UndoneView = React.createClass({
 	componentWillMount: function(){
-		ACTIONS.fetchAllTasks()
+		ACTIONS.fetchTasksByUser(this.props.userId)
 		STORE.on('dataUpdated', ()=> {
 			this.setState(STORE.data)
 		})
@@ -22,8 +23,8 @@ const UndoneView = React.createClass({
 		console.log(this.state.tasksCollection)
 		return(
 			<div>
-				<Navigation />
-				<h1>INCOMPLETE TASKS</h1>
+				<Banner />
+				<h1>YOUR INCOMPLETE TASKS</h1>
 				<Tasks tasksCollection={this.state.tasksCollection.where({done:false})} />
 			</div>
 		)
